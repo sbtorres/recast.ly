@@ -2,7 +2,8 @@ import VideoList from './VideoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
 import Search from './Search.js';
-// import searchYouTube from '../lib/searchYouTube.js';
+import searchYouTube from '../lib/searchYouTube.js';
+import YOUTUBE_API_KEY from '../config/youtube.js';
 
 class App extends React.Component {
   constructor() {
@@ -18,8 +19,16 @@ class App extends React.Component {
     });
   }
 
-  onSearchClick() {
-    console.log('hi')
+  onSearchClick(event) {
+    var option = {q: document.getElementsByClassName('form-control')[0].value,
+                   order: 'relevance',
+                   maxResults: 5,
+                   key: YOUTUBE_API_KEY,
+                   part: 'snippet'};
+    
+    searchYouTube(option, 
+      (data) => {this.setState( {player: data.items[0], vidList: [data.items[0], data.items[1], data.items[2], data.items[3], data.items[4]] } )},
+      () => console.log('Error, did not access data as requested'));
   }
 
   render() {
