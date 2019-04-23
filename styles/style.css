@@ -4,6 +4,18 @@ body {
   background: #f1f1f1;
 }
 
+h1 {
+  color: white;
+  font-size: 40px;
+  background-color: #1c1c1c;
+  padding: 8px;
+}
+
+.titleText {
+  background-Color: red; 
+  border-radius: 5px;
+}
+
 .navbar {
   background: #fff;
   margin-bottom: 20px;
@@ -32,8 +44,8 @@ body {
 }
 
 .search-bar .btn:hover {
-  border-color: #c6c6c6;
-  background: #f0f0f0;
+  border-color: #1c1c1c;
+  background: #777373;
   box-shadow: 0 1px 0 rgba(0,0,0,0.10);
 }
 
@@ -59,7 +71,8 @@ body {
 
 .video-list-entry {
   font-size: 16px;
-  padding: 8px;
+  padding: 21px 8px;
+  border-bottom: 1px dotted black;
 }
 
 .video-list-entry-title {
@@ -85,7 +98,7 @@ body {
 }
 
 h5 {
-  border: 2px solid red;
+  border: 5px solid darkslategray;
   text-align: center;
   padding: 10px;
 }

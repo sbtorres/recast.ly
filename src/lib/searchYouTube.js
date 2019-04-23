@@ -2,7 +2,15 @@ var searchYouTube = (options, callback, errorCB) => {
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
     type: 'GET',
-    data: options,
+    data: {
+      q: options.query,
+      order: 'relevance',
+      videoEmbeddable: 'true',
+      maxResults: options.max,
+      key: options.key,
+      part: 'snippet',
+      type: 'video'
+    },
     contentType: 'application/json',
     success: callback,
     error: errorCB || function(error) {

@@ -20,23 +20,36 @@ class App extends React.Component {
   }
 
   onSearchClick(event) {
-    var option = {q: document.getElementsByClassName('form-control')[0].value,
-                   order: 'relevance',
-                   maxResults: 5,
-                   key: YOUTUBE_API_KEY,
-                   part: 'snippet'};
-    
+    var option = {
+      query: document.getElementsByClassName('form-control')[0].value,
+      max: 5,
+      key: YOUTUBE_API_KEY,
+    }
+
     searchYouTube(option, 
       (data) => {this.setState( {player: data.items[0], vidList: [data.items[0], data.items[1], data.items[2], data.items[3], data.items[4]] } )},
       () => console.log('Error, did not access data as requested'));
   }
 
+  componentDidMount() {
+    var initialOption= {
+      query: 'cute cat video',
+      max: 5,
+      key: YOUTUBE_API_KEY,
+  };
+
+    searchYouTube(initialOption, 
+    (data) => {this.setState( {player: data.items[0], vidList: [data.items[0], data.items[1], data.items[2], data.items[3], data.items[4]] } )},
+    () => console.log('Error, did not access data as requested'));
+  }
+
   render() {
     return(
       <div>
+        <h1><span className="titleText">  RogerTube  </span></h1>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em><Search searchRequest ={this.onSearchClick.bind(this)} /></em> </h5></div>
+            <div><em><Search searchRequest ={this.onSearchClick.bind(this)} /></em></div>
           </div>
         </nav>
         <div className="row">
@@ -44,7 +57,7 @@ class App extends React.Component {
             <div><h5><em><VideoPlayer video = {this.state.player}/></em> </h5></div>
           </div>
           <div className="col-md-5">
-            <VideoList videos = {this.state.vidList} click = {this.onClick.bind(this)}/>
+            <h5><VideoList videos = {this.state.vidList} click = {this.onClick.bind(this)}/></h5>
           </div>
         </div>
       </div>

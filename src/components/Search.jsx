@@ -1,6 +1,6 @@
 var Search = (props) => {
   return (<div className="search-bar form-inline">
-    <input className="form-control" type="text"/>
+    <input className="form-control" type="text" placeholder="Search Youtube"/>
     <button className="btn hidden-sm-down" type="submit" onClick={props.searchRequest}>
       <span className="glyphicon glyphicon-search"></span>
     </button>
