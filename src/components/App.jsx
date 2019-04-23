@@ -1,6 +1,8 @@
 import VideoList from './VideoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
+import Search from './Search.js';
+// import searchYouTube from '../lib/searchYouTube.js';
 
 class App extends React.Component {
   constructor() {
@@ -16,12 +18,16 @@ class App extends React.Component {
     });
   }
 
+  onSearchClick() {
+    console.log('hi')
+  }
+
   render() {
     return(
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> </h5></div>
+            <div><h5><em><Search searchRequest ={this.onSearchClick.bind(this)} /></em> </h5></div>
           </div>
         </nav>
         <div className="row">
